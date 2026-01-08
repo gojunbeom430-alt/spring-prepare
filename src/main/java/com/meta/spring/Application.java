@@ -10,6 +10,7 @@ public class Application {
         SpringApplication.run(Application.class, args);
         System.out.println("xxxxx");
         System.out.println("Hello Spring");
+        System.out.println("Hello Spring");
         System.out.println("Kakao login");
         System.out.println(("naver login"));
     }
