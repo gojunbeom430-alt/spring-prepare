@@ -8,6 +8,8 @@ public class Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
+        System.out.println("Kakao login");
+        System.out.println(("naver login"));
     }
 
 }
