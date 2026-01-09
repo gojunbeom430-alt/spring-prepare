@@ -22,6 +22,5 @@ public class Calculator {
             default:
                 throw new IllegalArgumentException("잘못된 연산자를 입력하셨습니다.");
         }
-
     }
 }
