@@ -2,10 +2,13 @@ package com.meta.spring.calculator;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@Nested
+@DisplayName("계산기 테스트")
 class CalculatorTest {
     @Test
     @DisplayName("더하기 테스트")
@@ -26,9 +29,48 @@ class CalculatorTest {
 
 
     }
+
+    @Test
+    @DisplayName("빼기 테스트")
+    void test2() {
+        //given/When/Then 패턴으로 작성해야 좋다.
+        //Given
+        Double num1 = 8.0;
+        String op = "-";
+        Double num2 = 2.0;
+        Calculator calculator = new Calculator();
+
+        //When
+        Double result = calculator.operate(num1, op, num2);
+        System.out.println("result= " + result);
+
+        //Then
+        Assertions.assertEquals(6.0, result);
+    }
+
+    @Test
+    @DisplayName("곱하기 테스트")
+    void test3() {
+        //given/When/Then 패턴으로 작성해야 좋다.
+        //Given
+        Double num1 = 8.0;
+        String op = "*";
+        Double num2 = 2.0;
+        Calculator calculator = new Calculator();
+
+        //When
+        Double result = calculator.operate(num1,op,num2);
+        System.out.println("result= "+result);
+
+        //Then
+        Assertions.assertEquals(16,result);
+
+
+    }
+
     @Test
     @DisplayName("나누기 테스트")
-    void test2() {
+    void test4() {
         //given/When/Then 패턴으로 작성해야 좋다.
         //Given
         Double num1 = 8.0;
@@ -45,4 +87,47 @@ class CalculatorTest {
 
 
     }
+
+    @Test
+    @DisplayName("나누기 Null 테스트")
+    void test5() {
+        //given/When/Then 패턴으로 작성해야 좋다.
+        //Given
+        Double num1 = 8.0;
+        String op = "/";
+        Double num2 = 0.0;
+        Calculator calculator = new Calculator();
+
+        //When
+        Double result = calculator.operate(num1,op,num2);
+        System.out.println("result= "+result);
+
+        //Then
+        Assertions.assertNull(result);
+
+
+    }
+
+    @Test
+    @DisplayName("잘못된 연산자 입력 테스트")
+    void test6() {
+        //given/When/Then 패턴으로 작성해야 좋다.
+        //Given
+        Double num1 = 8.0;
+        String op = "%";
+        Double num2 = 0.0;
+        Calculator calculator = new Calculator();
+
+        //When & Then
+        IllegalArgumentException thrown = Assertions.assertThrows(
+                IllegalArgumentException.class,
+                () -> calculator.operate(num1,op,num2)
+        );
+
+        //Then
+        Assertions.assertEquals("잘못된 연산자를 입력하셨습니다.",thrown.getMessage());
+
+
+    }
+
 }
